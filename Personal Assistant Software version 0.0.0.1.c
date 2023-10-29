@@ -167,7 +167,7 @@ void devinfo(void)
 
 int main()
 {
-    system("color 70");
+    system("color A0");
     printf("\n\n\n\n");
     printf("\t\t\t\t------------------------------------------------------\n");
     printf("\t\t\t\t|             Personal Assistant Software            |\n");
