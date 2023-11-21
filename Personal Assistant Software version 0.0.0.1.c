@@ -1,6 +1,7 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#define MAX_TASKS 100
 
 struct Task
 {
@@ -9,82 +10,32 @@ struct Task
     int completed;
 };
 
-struct Task tasks[100];
-int totalTasks = 0;
+struct Task tasks[MAX_TASKS];
+int totalTasks=0;
 
-
-
-int read()
+int main()
 {
-    FILE *file = fopen("tasks.txt", "r");
-    if (file == NULL)
-    {
-        return;
-    }
+    system("color A0");
+    printf("\n\n\n\n");
+    printf("\t\t\t\t------------------------------------------------------\n");
+    printf("\t\t\t\t|             Personal Assistant Software            |\n");
+    printf("\t\t\t\t------------------------------------------------------\n");
+    printf("\t\t\t\t|                                                    |\n");
+    printf("\t\t\t\t|                                                    |\n");
+    printf("\t\t\t\t|            [1] User log in                         |\n");
+    printf("\t\t\t\t|            [2] Developer info                      |\n");
+    printf("\t\t\t\t|                                                    |\n");
+    printf("\t\t\t\t|                                                    |\n");
+    printf("\t\t\t\t|                                                    |\n");
+    printf("\t\t\t\t------------------------------------------------------\n");
 
-    while (fscanf(file, "%s %99[^\n]s %d", tasks[totalTasks].date, tasks[totalTasks].task, &tasks[totalTasks].completed) != EOF)
-    {
-        totalTasks++;
-    }
+    first();
 
-    fclose(file);
 }
 
 
 
-
-//------------------------------------Admin log in password cheeker-----------------------//
-
-int pass(int password)
-{
-    if(password==123)
-    {
-        system("cls");
-        ui(123);
-    }
-    else
-    {
-        system("cls");
-               printf("\n\n\n\n");
-               printf("\t\t\t\t------------------------------------------------------\n");
-               printf("\t\t\t\t|            Incorrect Password                      |\n");
-               printf("\t\t\t\t------------------------------------------------------\n");
-               printf("\t\t\t\t|                                                    |\n");
-               printf("\t\t\t\t|                                                    |\n");
-
-               printf("\t\t\t\t|            Enter your Correct Password             |\n");
-               printf("\t\t\t\t|                                                    |\n");
-
-               printf("\t\t\t\t|                                                    |\n");
-               printf("\t\t\t\t|                                                    |\n");
-               printf("\t\t\t\t|                                                    |\n");
-               printf("\t\t\t\t------------------------------------------------------\n");
-
-               printf("\t\t\t\t|Press [1] to Enter your correct password  |\n");
-
-               printf("\t\t\t\t|");
-
-               int re;
-               scanf("%d",&re);
-               if(re==1)
-    {
-        system("cls");
-            admin(1);
-        }
-        else
-        {
-
-            system("cls");
-            pass(password);
-        }
-
-    }
-}
-
-
-
-//------------------------------------------task-----------------------------
-void first(void)
+void first()
 {
     int chose;
 
@@ -95,14 +46,16 @@ void first(void)
     {
         admin(1);
     }
-    if(chose==3)
+    if(chose==2)
     {
         devinfo(3);
     }
-    if(chose==2)
+    if(chose==3)
     {
-        devadmin(2);
+        system("cls");
+        ui(3);
     }
+
     if(chose>3)
     {
         system("cls");
@@ -116,80 +69,11 @@ void first(void)
 
 
 
-void devinfo(void)
-{
-    system("cls");
-    int inp;
-    printf("\n\n\n\n");
-    printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|             Developer Informations                 |\n");
-    printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|      Name: Md.Mehedi Hasan                         |\n");
-    printf("\t\t\t\t|      ID: 02402320005101497                         |\n");
-    printf("\t\t\t\t|      Email: mahadihasanict01@gmail.com             |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|      Name: Tapty Sharker                           |\n");
-    printf("\t\t\t\t|      ID:  0242320005101046                         |\n");
-    printf("\t\t\t\t|      Email:sharker2305101046@diu.edu.bd            |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|      Name: Arfanul Haque                           |\n");
-    printf("\t\t\t\t|      ID: 242320005101157                           |\n");
-    printf("\t\t\t\t|      Email: mahadihasanict01@gmail.com             |\n");
-    printf("\t\t\t\t|                                                    |\n");
-
-    printf("\t\t\t\t|      Name: Samiul Haque                            |\n");
-    printf("\t\t\t\t|      ID: 242320005101098                           |\n");
-    printf("\t\t\t\t|      Email: samiul2305101098@diu.edu.bd            |\n");
-    printf("\t\t\t\t|                                                    |\n");
-
-
-
-
-
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t------------------------------------------------------\n");
-
-    printf("\n\n\n\n\n\n \t\t\t\tBack [1]  ");
-    scanf("%d",&inp);
-    if(inp==1)
-    {
-        system("cls");
-        main();
-
-    }
-
-}
-
-
-int main()
-{
-    system("color A0");
-    printf("\n\n\n\n");
-    printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|             Personal Assistant Software            |\n");
-    printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|            [1] User log in                         |\n");
-    printf("\t\t\t\t|            [2] Developer log in                    |\n");
-    printf("\t\t\t\t|            [3] Developer info                      |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t------------------------------------------------------\n");
-
-    first();
-    system("cls");
-}
 int admin(int a)
 {
     system("cls");
     int password;
-     system("color B0");
+    system("color B0");
     printf("\n\n\n\n");
     printf("\t\t\t\t------------------------------------------------------\n");
     printf("\t\t\t\t|             Personal Assistant Software            |\n");
@@ -210,227 +94,31 @@ int admin(int a)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-//=================================start the inner part==================//
-
-
-void compleated(void)
+int pass(int password)
 {
-    system("cls");
-    int inp;
-    printf("\n\n\n\n");
-    printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|             Completed Task                        |\n");
-    printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|  Date 23-09-2023                                   |\n");
-    printf("\t\t\t\t|  Meeting With DIU ACM Members                      |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|  Date 24-09-2023                                   |\n");
-    printf("\t\t\t\t|  Wife Birthday                                     |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|  Date 25-09-2023                                   |\n");
-    printf("\t\t\t\t|  Meeting With AR Group of Ind.                     |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|  Date 26-09-2023                                   |\n");
-    printf("\t\t\t\t|  Visiting Firm House                               |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\n\n\n\n\n\n Back [1]  ");
-    scanf("%d",&inp);
-    if(inp==1)
+    if(password==123)
     {
         system("cls");
-        ui(1);
-
+        ui(123);
     }
-
-}
-
-
-
-
-
-
-
-
-//--------------------------------------File ---- Add task -------------------------------
-
-void add_task()
-{
-    FILE * file;
-    char name[25];
-    char date[20];
-    file = fopen("Test.txt","a");
-
-    if(file== NULL)
-    {
-        printf("File dosen't Exist");
-    }
-
-    else
-    {
-        system("cls");
-        printf("\t\t\t\t------------------------------------------------------\n");
-        printf("\t\t\t\t|             Enter Your Task                        |\n");
-        printf("\t\t\t\t------------------------------------------------------\n");
-
-        printf("\t\t\t\t| Date:");
-        scanf("%s",&date);
-
-
-
-        printf("\t\t\t\t| Task name:");
-
-        scanf("%s",&name);
-
-        fprintf(file,"\t\t\t\t  Date %s \n\t\t\t\t  %s\n",date,name);
-
-        printf("\t\t\t\tTask added successfully\n\n\n");
-        printf("\t\t\t\tBack [1]                            Add another task [2]");
-        int n;
-        printf("\t\t\t\t|");
-        scanf("%d",&n);
-
-        if(n==1)
-        {
-            system("cls");
-            ui(1);
-        }
-        if(n==2)
-        {
-            system("cls");
-            add_task();
-        }
-        if(n==7)
-        {
-            system("cls");
-            main();
-        }
-
-
-    }
-
-}
-
-
-
-void check_Upcoming_task()
-{
-
-
-    FILE * file;
-    char ch;
-    file = fopen("Test.txt","r");
-
-    if(file== NULL)
-    {
-        printf("File dosen't Exist");
-    }
-
-    else
-    {
-        system("cls");
-        printf("\t\t\t\t------------------------------------------------------\n");
-        printf("\t\t\t\t|                 Your Tasks                          |\n");
-        printf("\t\t\t\t------------------------------------------------------\n");
-
-        while(!feof(file))
-        {
-            ch=fgetc(file);
-            printf("%c",ch);
-        }
-        printf("\t\t\t\tBack [1]                            Add a task [2]");
-        int n;
-        printf("\t\t\t\t|");
-        scanf("%d",&n);
-
-        if(n==1)
-        {
-            system("cls");
-            ui(1);
-        }
-        if(n==2)
-        {
-            system("cls");
-            add_task();
-        }
-
-
-
-    }
-
-}
-
-
-//------------------------------------Warning----------------------------------------//
-//-----------------------------------------------------------------------------------//
-// --------------------------------This is Developper part--------------------------//
-
-
-int devadmin(int a)
-{
-    system("cls");
-
-    printf("\n\n\n\n");
-    printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|             Developer log in                       |\n");
-    printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|             Password:                              |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|");
-    char passwod[20];
-    scanf("%s",&passwod);
-
-    devpass(passwod);
-
-
-}
-
-
-
-int devpass(char passwod[])
-{
-    if (strcmp(passwod,"mehedi")==0)
-    {
-        system("cls");
-        devui();
-    }
-
-
-
     else
     {
         system("cls");
         printf("\n\n\n\n");
         printf("\t\t\t\t------------------------------------------------------\n");
-        printf("\t\t\t\t|             Developer log in                       |\n");
-
-        printf("\t\t\t\t------------------------------------------------------\n");
-        printf("\t\t\t\t|            Developer mode is on   (*_*)            |\n");
-        printf("\t\t\t\t|                                                    |\n");
         printf("\t\t\t\t|            Incorrect Password                      |\n");
+        printf("\t\t\t\t------------------------------------------------------\n");
+        printf("\t\t\t\t|                                                    |\n");
+        printf("\t\t\t\t|                                                    |\n");
         printf("\t\t\t\t|            Enter your Correct Password             |\n");
         printf("\t\t\t\t|                                                    |\n");
-        printf("\t\t\t\t|            Press 1 to Enter your correct password  |\n");
         printf("\t\t\t\t|                                                    |\n");
         printf("\t\t\t\t|                                                    |\n");
         printf("\t\t\t\t|                                                    |\n");
         printf("\t\t\t\t------------------------------------------------------\n");
+
+        printf("\t\t\t\t|Press [1] to Enter your correct password  |\n");
+
         printf("\t\t\t\t|");
 
         int re;
@@ -438,13 +126,13 @@ int devpass(char passwod[])
         if(re==1)
         {
             system("cls");
-            devadmin(3);
+            admin(1);
         }
         else
         {
 
             system("cls");
-            devpass(passwod);
+            pass(password);
         }
 
     }
@@ -454,72 +142,52 @@ int devpass(char passwod[])
 
 
 
-int devui()
+void devinfo()
 {
+    system("cls");
+
     printf("\n\n\n\n");
     printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|             Personal Assistant project             |\n");
+    printf("\t\t\t\t|             Developer Informations                 |\n");
     printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|            Developer mode is on   (*_*)            |\n");
     printf("\t\t\t\t|                                                    |\n");
-    printf("\t\t\t\t|            [1] Change user name                    |\n");
-    printf("\t\t\t\t|            [2] Change User Password                |\n");
-    printf("\t\t\t\t|            [3] Change Admin Password               |\n");
-    printf("\t\t\t\t|            [4] Clear data                          |\n");
-    printf("\t\t\t\t|            [5] Reset Factory                       |\n");
-    printf("\t\t\t\t|            [7] Log Out                             |\n");
+    printf("\t\t\t\t|                                                    |\n");
+    printf("\t\t\t\t|      Name: Md.Mehedi Hasan                         |\n");
+    printf("\t\t\t\t|      ID: 02402320005101497                         |\n");
+    printf("\t\t\t\t|      Email: mahadihasanict01@gmail.com             |\n");
+    printf("\t\t\t\t|                                                    |\n");
+    printf("\t\t\t\t|                                                    |\n");
+    printf("\t\t\t\t|      Name: Tapty Sharker                           |\n");
+    printf("\t\t\t\t|      ID:  0242320005101046                         |\n");
+    printf("\t\t\t\t|      Email:sharker2305101046@diu.edu.bd            |\n");
+    printf("\t\t\t\t|                                                    |\n");
+    printf("\t\t\t\t|                                                    |\n");
+    printf("\t\t\t\t|      Name: Arfanul Haque                           |\n");
+    printf("\t\t\t\t|      ID: 242320005101157                           |\n");
+    printf("\t\t\t\t|      Email: mahadihasanict01@gmail.com             |\n");
+    printf("\t\t\t\t|                                                    |\n");
+    printf("\t\t\t\t|      Name: Samiul Haque                            |\n");
+    printf("\t\t\t\t|      ID: 242320005101098                           |\n");
+    printf("\t\t\t\t|      Email: samiul2305101098@diu.edu.bd            |\n");
     printf("\t\t\t\t|                                                    |\n");
     printf("\t\t\t\t|                                                    |\n");
     printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|");
-
-
-
-    dev_cheek_task();
-
-
-}
-
-void dev_cheek_task(void)
-{
-    int task;
-    scanf("%d",&task);
-    if(task==1)
-    {
-        compleated();
-        //Update(1);
-    }
-    if(task==3)
-    {
-        devinfo();
-        //Update(1);
-    }
-
-    if(task==7)
+    int inp;
+    printf("\n\n\n\n\n\n \t\t\t\t Back [1]  ");
+    scanf("%d",&inp);
+    if(inp==1)
     {
         system("cls");
         main();
-    }
-
-    if(task>3)
-    {
-        system("cls");
-        printf("Enter A Correct Key \n");
-        devui();
 
     }
-
 
 }
-
-
-
-
 
 
 int ui()
 {
-    read();
+
     printf("\n\n\n\n");
     printf("\t\t\t\t------------------------------------------------------\n");
     printf("\t\t\t\t|             Personal Assistant project             |\n");
@@ -544,141 +212,133 @@ int ui()
 
 }
 
+
 void cheek_task()
 {
-    int task;
-    scanf("%d",&task);
-    switch(task)
+    read();
+
+    int choice;
+
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice)
     {
     case 1:
-        system("cls");
-        addTask(1);
+        addTask();
         break;
     case 2:
-        system("cls");
         updateTask();
         break;
     case 3:
-        system("cls");
         completeTask();
         break;
     case 4:
-        system("cls");
         cancelTask();
         break;
     case 5:
-        system("cls");
         checkUpcomingTasks();
         break;
     case 6:
-        system("cls");
         checkTasksOnDate();
         break;
     case 7:
-        system("cls");
         checkCompletedTasks();
         break;
     case 8:
-        return 0;
+
+        break;
     default:
-        printf("Invalid choice.\n");
+        printf("Invalid choice. Please try again.\n");
     }
-
-
 
 }
 
 
-//----------------------------------------warning-------------------------------------------------
-//-------------------------------------it is a file part------------------------------------------
 
-
-//------------------load from file ------------------------
-void file()
+int write()
 {
-    FILE *file = fopen("tasks.txt", "w");
+    FILE *file = fopen("tasks.txt","w");
     if (file == NULL)
     {
+        printf("\t\t\t\t|");
         printf("Error saving tasks to file.\n");
         return;
     }
 
-    for (int i = 0; i < totalTasks; i++)
+    for(int i=0;i<totalTasks;i++)
     {
-        fprintf(file, "%s %s %d\n", tasks[i].date, tasks[i].task, tasks[i].completed);
+        fprintf(file,"%s %s %d\n",tasks[i].date,tasks[i].task,tasks[i].completed);
     }
 
     fclose(file);
 }
-
-
-
-
-void addTask(int x)
+ int read()
 {
+    FILE *file=fopen("tasks.txt","r");
+
+    if(file==NULL)
+    {
+        printf("\t\t\t\t|");
+        printf("No previous tasks found.\n");
+        return 0;
+    }
+
+    char line[150];
+    totalTasks = 0;
+    while(fgets(line, sizeof(line),file)!= NULL)
+    {
+        sscanf(line,"%s %99[^\n]s %d",tasks[totalTasks].date, tasks[totalTasks].task,&tasks[totalTasks].completed);
+        totalTasks++;
+    }
+
+    fclose(file);
+    return 1;
+}
+
+
+void addTask()
+{
+
+    system("cls");
     printf("\t\t\t\t------------------------------------------------------\n");
     printf("\t\t\t\t|                    Add Task                         |\n");
     printf("\t\t\t\t------------------------------------------------------\n");
-
-    if (totalTasks == 100)
-    {
-        printf("Cannot add more tasks.\n");
-        return;
-    }
-
     printf("\t\t\t\t|");
+
     printf("Enter the date (YYYY-MM-DD): \n");
     printf("\t\t\t\t|");
     scanf("%s", tasks[totalTasks].date);
-
-    printf("\t\t\t\t|");
+    printf("\n\t\t\t\t|");
     printf("Enter the task information: \n");
     printf("\t\t\t\t|");
     scanf(" %99[^\n]s", tasks[totalTasks].task);
 
     tasks[totalTasks].completed = 0;
     totalTasks++;
-//------------------file on--------------------------
-
-    FILE *file = fopen("tasks.txt", "w");
-    if (file == NULL)
-    {
-        printf("Error saving tasks to file.\n");
-        return;
-    }
-
-    for (int i = 0; i < totalTasks; i++)
-    {
-        fprintf(file, "%s %s %d\n", tasks[i].date, tasks[i].task, tasks[i].completed);
-    }
-
-    fclose(file);
-
-//------------------------file close-----------------
-    printf("\n\t\t\t\t|");
+    write();
+    printf("\t\t\t\t|");
     printf("Task added successfully.\n");
 
-
-    printf("\t\t\t\tBack [1]                            Add another task [2]\n");
-    int n;
+    printf("\n\n\n\n");
     printf("\t\t\t\t|");
-    scanf("%d",&n);
+    printf("[1] Back                                       [2] Add another Task\n");
 
-    if(n==1)
+    int s;
+
+    printf("\t\t\t\t|");
+    scanf("%d",&s);
+    if(s==1)
     {
         system("cls");
-        ui(1);
+        ui();
     }
-    if(n==2)
+    if(s==2)
     {
-        system("cls");
-        addTask(x);
+        addTask();
     }
-    if(n==7)
-    {
-        system("cls");
-        main();
-    }
+
+
 
 
 }
@@ -686,307 +346,334 @@ void addTask(int x)
 void updateTask()
 {
 
+    system("cls");
     printf("\t\t\t\t------------------------------------------------------\n");
     printf("\t\t\t\t|                    Update task                      |\n");
     printf("\t\t\t\t------------------------------------------------------\n");
 
+    printf("\t\t\t\t|");
+    printf("Enter the date of the task to be updated (YYYY-MM-DD): \n");
     char date[12];
+    printf("\t\t\t\t|");
+    scanf("%s",date);
 
-    printf("Enter the date of the task to be updated (YYYY-MM-DD):\n");
 
-    scanf("%s", date);
+    int found=0;
 
-    int found = 0;
-    for (int i = 0; i < totalTasks; i++)
+    for(int i=0; i<totalTasks; i++)
     {
-        if (strcmp(tasks[i].date, date) == 0)
+        if (strcmp(tasks[i].date,date)==0)
         {
-            printf("%d. %s %s\n", i, tasks[i].task, tasks[i].completed ? "(Completed)":"(Pending)");
-            found = 1;
+            printf("\t\t\t\t|");
+            printf("Current task: %s\n",tasks[i].task);
+            printf("\t\t\t\t|");
+            printf("Enter the updated task information: \n");
+            printf("\t\t\t\t|");
+            scanf(" %99[^\n]s", tasks[i].task);
+            printf("\n\t\t\t\t|");
+            printf("Task updated successfully.\n");
+            found=1;
+            break;
         }
     }
 
-    if (!found)
+    if(!found)
     {
+        printf("\t\t\t\t|");
         printf("No tasks found for the given date.\n");
-        return;
     }
 
-    int choice;
-    printf("Enter the index of the task to update: ");
-    scanf("%d", &choice);
-
-    if (choice >= 0 && choice < totalTasks)
-    {
-        printf("Enter the updated task information: ");
-        scanf(" %99[^\n]s", tasks[choice].task);
-        printf("Task updated successfully.\n");
-    }
-    else
-    {
-        printf("Invalid index.\n");
-    }
-
-    //------------------file on--------------------------
-
-    FILE *file = fopen("tasks.txt", "w");
-    if (file == NULL)
-    {
-        printf("Error saving tasks to file.\n");
-        return;
-    }
-
-    for (int i = 0; i < totalTasks; i++)
-    {
-        fprintf(file, "%s %s %d\n", tasks[i].date, tasks[i].task, tasks[i].completed);
-    }
-    fclose(file);
-
-//------------------------file close-----------------
-    printf("\n\t\t\t\t|");
-    printf("Task updated successfully.\n");
+    write();
 
 
-
-
-    printf("\t\t\t\tBack [1]                            Add another task [2]\n");
-    int n;
     printf("\t\t\t\t|");
-    scanf("%d",&n);
+    printf("[1] Back                                [2] Add another Task |\n");
+    printf("\t\t\t\t|");
+    printf("[3] Log out                             [4] Update Task      |\n");
 
-    if(n==1)
+    int s;
+    printf("\n\n\n\n");
+    printf("\t\t\t\t|");
+    scanf("%d",&s);
+    if(s==1)
     {
         system("cls");
-        ui(1);
+        ui();
     }
-    if(n==2)
+    if(s==2)
     {
-        system("cls");
-        updateTask();
+        addTask();
     }
-    if(n==7)
+    if(s==3)
     {
-        system("cls");
         main();
     }
 
+    if(s==4)
+    {
+        updateTask();
+    }
+
+
+
+
 }
+
+
+
+
+
+
+
 
 void completeTask()
 {
-    char date[12];
-    printf("Enter the date of the task to be marked as complete (YYYY-MM-DD): ");
-    scanf("%s", date);
-
-    int found = 0;
-    for (int i = 0; i < totalTasks; i++)
-    {
-        if (strcmp(tasks[i].date, date) == 0)
-        {
-            printf("%d. %s %s\n", i, tasks[i].task, tasks[i].completed ?"(Completed)" : "(Pending)");
-            found = 1;
-        }
-    }
-
-    if (found!=1)
-    {
-        printf("No tasks found for the given date.\n");
-        return;
-    }
-
-    int choice;
-    printf("Enter the index of task to compleate: ");
-    scanf("%d", &choice);
-
-    if (choice >= 0 && choice < totalTasks)
-    {
-        tasks[choice].completed = 1;
-        printf("Task marked as completed.\n");
-    }
-    else
-    {
-        printf("Invalid index.\n");
-    }
-
-    file();
-
-    printf("\n\t\t\t\t|");
-    printf("Task compleated successfully.\n");
-
-    printf("Back [1]                            Add another task [2]\n");
-    int n;
-
-    scanf("%d",&n);
-    if(n==1)
-    {
-        system("cls");
-        ui(1);
-    }
-    if(n==2)
-    {
-        system("cls");
-        completeTask();
-    }
-    if(n==7)
-    {
-        system("cls");
-        main();
-    }
-
-
-}
-
-
-void cancelTask()
-{
+    system("cls");
     printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|               Cancel Your Task                      |\n");
+    printf("\t\t\t\t|                  Complete task                      |\n");
     printf("\t\t\t\t------------------------------------------------------\n");
 
+    printf("\t\t\t\t|");
+    printf("Enter the date to mark as complete Task (YYYY-MM-DD): \n");
     char date[12];
     printf("\t\t\t\t|");
-    printf("Enter the date of the task to be canceled (YYYY-MM-DD): \n");
-    scanf("%s", date);
+    scanf("%s",date);
 
-    int found = 0;
-    for (int i = 0; i < totalTasks; i++)
+    int found=0;
+    for (int i=0; i<totalTasks; i++)
     {
-        if (strcmp(tasks[i].date, date) == 0)
+        if(strcmp(tasks[i].date,date)==0)
         {
-            printf("%d. %s %s\n", i, tasks[i].task, tasks[i].completed ? "(Completed)" : "(Pending)");
-            found = 1;
+            tasks[i].completed=1;
+            printf("\t\t\t\t|");
+            printf("Task marked as completed.\n");
+            found=1;
+            break;
         }
     }
 
     if (!found)
     {
+        printf("\n\t\t\t\t|");
         printf("No tasks found for the given date.\n");
-        return;
     }
 
-    int choice;
-    printf("Enter the index of the task to cancel: ");
-    scanf("%d", &choice);
+    write();
 
-    if (choice >= 0 && choice < totalTasks)
+    printf("\n\n\n\n");
+    printf("\t\t\t\t|");
+    printf("[1] Back                                [2] Add another Task |\n");
+    printf("\t\t\t\t|");
+    printf("[3] Compleate another task              [4] Update Task      |\n");
+
+    int s;
+    printf("\t\t\t\t|");
+    scanf("%d",&s);
+    if(s==1)
     {
-        for (int i = choice; i < totalTasks - 1; i++)
-        {
-            tasks[i] = tasks[i + 1];
-        }
-        totalTasks--;
-        printf("Task canceled successfully.\n");
+        system("cls");
+        ui();
     }
-    else
+    if(s==2)
     {
-        printf("Invalid index.\n");
+        addTask();
+    }
+    if(s==3)
+    {
+        completeTask();
     }
 
-    file();
+    if(s==4)
+    {
+        updateTask();
+    }
+
+
+
+
+
+
+
+
+
+
 }
 
-
-void checkUpcomingTasks()
+void cancelTask()
 {
     system("cls");
     printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|          Your Upcoming Tasks                        |\n");
+    printf("\t\t\t\t|                   Cancel task                      |\n");
     printf("\t\t\t\t------------------------------------------------------\n");
 
-    if (totalTasks == 0)
-    {
-        printf("No tasks found.\n");
-        return;
-    }
-
-    printf("Upcoming tasks:\n");
-    for (int i = 0; i < totalTasks; i++)
-    {
-        printf("%s %s %s\n", tasks[i].date, tasks[i].task, tasks[i].completed ? "(Completed)" : "(Pending)");
-    }
-
-
-    printf("\t\t\t\tBack [1]                            Add another task [2]");
-    int n;
     printf("\t\t\t\t|");
-    scanf("%d",&n);
 
-    if(n==1)
+    printf("Enter the date of the task to be canceled (YYYY-MM-DD): \n");
+    char date[12];
+    printf("\t\t\t\t|");
+    scanf("%s",date);
+
+    int found=0;
+    for(int i=0; i<totalTasks; i++)
     {
-        system("cls");
-        ui(1);
+        if(strcmp(tasks[i].date,date)==0)
+        {
+            for(int j=i; j<totalTasks-1; j++)
+            {
+                tasks[j]=tasks[j+1];
+            }
+            totalTasks--;
+            printf("\t\t\t\t|");
+            printf("Task canceled successfully.\n");
+            found=1;
+            break;
+        }
     }
-    if(n==2)
+
+    if (!found)
     {
-        system("cls");
-        add_task();
+        printf("\t\t\t\t|");
+        printf("No tasks found for the given date.\n");
     }
-    else
+
+    write();
+
+    printf("\n\n\n\n");
+    printf("\t\t\t\t|");
+    printf("[1] Back                             [2] Add a Task          |\n");
+    printf("\t\t\t\t|");
+    printf("[3] Log out                          [4] Cancel another Task |\n");
+
+    int s;
+    printf("\t\t\t\t|");
+    scanf("%d",&s);
+    if(s==1)
     {
         system("cls");
+        ui();
+    }
+    if(s==2)
+    {
+        addTask();
+    }
+    if(s==3)
+    {
         main();
     }
 
+    if(s==4)
+    {
+        cancelTask();
+    }
+
+}
+
+void checkUpcomingTasks()
+{
+
+    system("cls");
+    printf("\t\t\t\t------------------------------------------------------\n");
+    printf("\t\t\t\t|                Cheek Upcoming task                  |\n");
+    printf("\t\t\t\t------------------------------------------------------\n");
+
+    printf("\t\t\t\t|");
+    printf("Upcoming tasks:\n");
+    for (int i = 0; i < totalTasks; i++)
+    {
+        if (!tasks[i].completed)
+        {
+            printf("\t\t\t\t|");
+            printf("%s %s %s\n", tasks[i].date, tasks[i].task, tasks[i].completed ? "(Completed)":"(Pending)");
+        }
+    }
 
 
 
+    printf("\n\n\n\n");
+    printf("\t\t\t\t|");
+    printf("[1] Back                             [2] Add a Task          |\n");
+    printf("\t\t\t\t|");
+    printf("[3] Log out                          [4] Cancel another Task |\n");
 
+    int s;
+    printf("\t\t\t\t|");
+    scanf("%d",&s);
+    if(s==1)
+    {
+        system("cls");
+        ui();
+    }
+    if(s==2)
+    {
+        addTask();
+    }
+    if(s==3)
+    {
+        main();
+    }
+
+    if(s==4)
+    {
+        cancelTask();
+    }
 }
 
 void checkTasksOnDate()
 {
-
+    system("cls");
     printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|                 Cheek task                          |\n");
+    printf("\t\t\t\t|              Search Task by Date                   |\n");
     printf("\t\t\t\t------------------------------------------------------\n");
 
-    char date[12];
     printf("\t\t\t\t|");
     printf("Enter the date to check tasks (YYYY-MM-DD): \n");
-    printf("\t\t\t\t|");
-    scanf("%s", date);
+    char date[12];
+    scanf("%s",date);
 
-    int found = 0;
-    for (int i = 0; i < totalTasks; i++)
+    int found=0;
+    for (int i=0; i<totalTasks; i++)
     {
-        if (strcmp(tasks[i].date, date) == 0)
+        if (strcmp(tasks[i].date,date)==0)
         {
-            printf("%s %s %s\n", tasks[i].task, tasks[i].completed ? "(Completed)" : "(Pending)");
+            printf("\t\t\t\t|");
+            printf("%s %s %s\n",tasks[i].date,tasks[i].task,tasks[i].completed ?"(Completed)":"(Pending)");
             found = 1;
         }
     }
 
-    if (!found)
+    if(!found)
     {
+        printf("\t\t\t\t|");
         printf("No tasks found for the given date.\n");
     }
+    printf("\n\n\n\n");
 
-
-
-    printf("\t\t\t\tBack [1]                            Add another task [2]");
-    int n;
     printf("\t\t\t\t|");
-    scanf("%d",&n);
+    printf("[1] Back                             [2] Add a Task    |\n");
+    printf("\t\t\t\t|");
+    printf("[3] Log out                          [4] Cancel a Task |\n");
 
-    if(n==1)
+    int s;
+    printf("\t\t\t\t|");
+    scanf("%d",&s);
+    if(s==1)
     {
         system("cls");
-        ui(1);
+        ui();
     }
-    if(n==2)
+    if(s==2)
     {
-        system("cls");
-        add_task();
+        addTask();
     }
-    else
+    if(s==3)
     {
-        system("cls");
         main();
     }
 
-
-
-
+    if(s==4)
+    {
+        cancelTask();
+    }
 
 
 
@@ -994,61 +681,51 @@ void checkTasksOnDate()
 
 void checkCompletedTasks()
 {
-
+    system("cls");
     printf("\t\t\t\t------------------------------------------------------\n");
-    printf("\t\t\t\t|            Cheek compleate task by date              |\n");
+    printf("\t\t\t\t|                   Cancel task                      |\n");
     printf("\t\t\t\t------------------------------------------------------\n");
 
-    char date[12];
     printf("\t\t\t\t|");
-    printf("Enter the date to check tasks (YYYY-MM-DD): \n");
-      printf("\t\t\t\t|");
-    scanf("%s", date);
+    printf("Completed tasks:\n");
 
-
-
-
-
-
-    int found = 0;
-    for (int i = 0; i < totalTasks; i++)
+    for (int i=0;i<totalTasks;i++)
     {
         if (tasks[i].completed)
         {
-            printf("%s %s\n", tasks[i].date, tasks[i].task);
-            found = 1;
+            printf("\t\t\t\t|");
+            printf("%s %s\n", tasks[i].date,tasks[i].task);
         }
     }
+    printf("\n\n\n\n");
 
-    if (!found)
-    {
-        printf("\t\t\t\t|");
-        printf("No completed tasks found.\n");
-
-
-
-    }
-
-    printf("\t\t\t\tBack [1]                            Add another task [2]");
-    int n;
     printf("\t\t\t\t|");
-    scanf("%d",&n);
+    printf("[1] Back                             [2] Add a Task    |\n");
+    printf("\t\t\t\t|");
+    printf("[3] Log out                          [4] Cancel a Task |\n");
 
-    if(n==1)
+    int s;
+    printf("\t\t\t\t|");
+    scanf("%d",&s);
+    if(s==1)
     {
         system("cls");
-        ui(1);
+        ui();
     }
-    if(n==2)
+    if(s==2)
     {
-        system("cls");
-        add_task();
+        addTask();
     }
-    else
+    if(s==3)
     {
-        system("cls");
         main();
     }
+
+    if(s==4)
+    {
+        cancelTask();
+    }
+
 
 
 
@@ -1056,3 +733,5 @@ void checkCompletedTasks()
 
 
 }
+
+
